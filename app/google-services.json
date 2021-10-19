@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "890763430528",
+    "project_id": "sumupproject-785db",
+    "storage_bucket": "sumupproject-785db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:890763430528:android:9801027063f397a5f5b465",
+        "android_client_info": {
+          "package_name": "com.minenick.sumupproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "890763430528-50h4ketu9ji13teg216ood5cl8khj9mc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.minenick.sumupproject",
+            "certificate_hash": "5243e24a4db5ab2ce77967263c33fc0fcb071721"
+          }
+        },
+        {
+          "client_id": "890763430528-a7sb4hemfrhr7qf6tbr9059bahhjfmoc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0U3dxCc842ky0W5sHSJ_v-t2Dk3SDoxE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "890763430528-a7sb4hemfrhr7qf6tbr9059bahhjfmoc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
