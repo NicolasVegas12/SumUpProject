@@ -57,7 +57,7 @@ class AuthActivity : AppCompatActivity() {
 
                 }
             }else{
-                Toast.makeText(this,"Por favor rellene los espacion en blanco",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Por favor rellene los espacios en blanco",Toast.LENGTH_LONG).show()
             }
         }
     }

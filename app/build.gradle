@@ -52,4 +52,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     //Autenticacion
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Recycle View y card View
+    implementation 'androidx.recycleview:recycleview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
