@@ -56,4 +56,10 @@ dependencies {
     //Recycle View y card View
     implementation 'androidx.recycleview:recycleview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Cloud Firebase
+    implementation 'com.google.firebase:firebase-firebase:21.6.0'
 }
