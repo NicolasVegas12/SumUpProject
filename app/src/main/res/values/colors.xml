@@ -10,4 +10,5 @@
     <color name="background">#353535</color>
     <color name="primary">#6A0404</color>
     <color name="secondary">#361212</color>
+    <color name="cards">#350000</color>
 </resources>

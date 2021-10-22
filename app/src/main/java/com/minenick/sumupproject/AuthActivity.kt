@@ -50,7 +50,7 @@ class AuthActivity : AppCompatActivity() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.etEmail.text.toString(),
                 binding.etPassword.text.toString()).addOnCompleteListener {
                     if(it.isSuccessful){
-                        showHome(it.result?.user?.email?:"")
+                        showHome(it.result?.user?.email ?:"")
                     }else{
                         showAlert()
                     }
@@ -76,7 +76,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun showHome(email:String){
         val homeIntent = Intent(this,CardsActivity::class.java).apply{
-            putExtra("email",email)
+            putExtra("email", email)
         }
         startActivity(homeIntent)
     }

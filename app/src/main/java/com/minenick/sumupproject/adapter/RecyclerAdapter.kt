@@ -12,14 +12,14 @@ import com.minenick.sumupproject.databinding.ItemListViewBinding
 import com.minenick.sumupproject.entities.Card
 import com.squareup.picasso.Picasso
 
-class RecyclerAdapter (private val cardList:ArrayList<Card>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter (private val cardList:MutableList<Card>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val binding=ItemListViewBinding.bind(itemView)
         fun render(card:Card){
             binding.tvNroCard.text=card.number
             binding.tvPropietario.text=card.owner
-            binding.tvFecha.text="${card.date?.year} / ${card.date?.month}"
+            binding.tvFecha.text=card.date
             Picasso.get().load(card.img).into(binding.ivCard)
             itemView.setOnClickListener {
                 Toast.makeText(itemView.context,"Tarjeta elegida : ${card.number}",Toast.LENGTH_SHORT).show()
@@ -37,7 +37,6 @@ class RecyclerAdapter (private val cardList:ArrayList<Card>) : RecyclerView.Adap
         holder.render(cardList[position])
     }
 
-    override fun getItemCount(): Int {
-        return cardList.size
-    }
+    override fun getItemCount(): Int = cardList.size
+
 }
