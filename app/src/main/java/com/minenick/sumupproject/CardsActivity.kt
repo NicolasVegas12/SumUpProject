@@ -16,9 +16,7 @@ import com.minenick.sumupproject.entities.Card
 class CardsActivity : AppCompatActivity() {
 
 
-    private var cards:MutableList<Card> = mutableListOf(
-        Card("1223 2562 2458 5965","NICOLAS VEGAS","11/25","https://www.viabcp.com/wcm/connect/1d3e0805-edee-4fc5-89c8-e0266a61bc84/Credimas+corregida.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1d3e0805-edee-4fc5-89c8-e0266a61bc84-nAzhk1k")
-    )
+    private var cards:MutableList<Card> = mutableListOf()
     private lateinit var binding:ActivityCardsBinding
     private lateinit var cardDBHelper:CardSQLiteHelper
 
@@ -43,10 +41,7 @@ class CardsActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
 
-    }
 
     private fun initRecycle() {
         binding.rvCard.layoutManager=LinearLayoutManager(this)

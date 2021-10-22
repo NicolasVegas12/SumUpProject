@@ -47,10 +47,11 @@ class AuthActivity : AppCompatActivity() {
         title="Autenticación"
         binding.btnLogIn.setOnClickListener {
             if (binding.etEmail.text.isNotBlank()&&binding.etPassword.text.isNotBlank()){
+
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.etEmail.text.toString(),
                 binding.etPassword.text.toString()).addOnCompleteListener {
                     if(it.isSuccessful){
-                        showHome(it.result?.user?.email ?:"")
+                        showHome(it.result?.user?.email?:"")
                     }else{
                         showAlert()
                     }
