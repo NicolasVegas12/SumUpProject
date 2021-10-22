@@ -1,14 +1,12 @@
-package com.minenick.sumupproject
+package com.minenick.sumupproject.model
 
 import android.content.Intent
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minenick.sumupproject.adapter.RecyclerAdapter
-import com.minenick.sumupproject.databinding.ActivityAuthBinding
 import com.minenick.sumupproject.databinding.ActivityCardsBinding
 import com.minenick.sumupproject.db.CardSQLiteHelper
 import com.minenick.sumupproject.entities.Card
@@ -34,7 +32,7 @@ class CardsActivity : AppCompatActivity() {
         initRecycle()
         binding.tvWarning.isVisible = cards.isEmpty()
         binding.btnAdd.setOnClickListener{startActivity(
-            Intent(this,RegisterCardActivity::class.java).apply {
+            Intent(this, RegisterCardActivity::class.java).apply {
                 putExtra("email", email)
             })
         }

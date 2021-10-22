@@ -1,4 +1,4 @@
-package com.minenick.sumupproject
+package com.minenick.sumupproject.model
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +34,7 @@ class RegisterActivity : AppCompatActivity() {
                         binding.etPassword.text.toString()).addOnCompleteListener {
                             if(it.isSuccessful){
                                 userDBHelper.addData(binding.etEmail.text.toString(),binding.etPassword.text.toString())
-                                startActivity(Intent(this,AuthActivity::class.java))
+                                startActivity(Intent(this, AuthActivity::class.java))
                             }else{
                                 showAlert()
                             }

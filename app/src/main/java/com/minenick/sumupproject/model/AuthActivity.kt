@@ -1,4 +1,4 @@
-package com.minenick.sumupproject
+package com.minenick.sumupproject.model
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +25,7 @@ class AuthActivity : AppCompatActivity() {
 
         //Registro
         binding.tvRegister.setOnClickListener{
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
         //Setup
         setup()
@@ -76,7 +76,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun showHome(email:String){
-        val homeIntent = Intent(this,CardsActivity::class.java).apply{
+        val homeIntent = Intent(this, CardsActivity::class.java).apply{
             putExtra("email", email)
         }
         startActivity(homeIntent)
