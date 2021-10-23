@@ -1,28 +1,31 @@
 package com.minenick.sumupproject.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.minenick.sumupproject.R
 import com.minenick.sumupproject.databinding.ItemListViewBinding
 import com.minenick.sumupproject.entities.Card
 import com.squareup.picasso.Picasso
 
-class RecyclerAdapter (private val cardList:MutableList<Card>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+class RecyclerAdapter (private val cardList:MutableList<Card>,private val itemClickListener:onCardClickListener) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
+
+    interface onCardClickListener{
+        fun onItemClick(number:String)
+    }
 
     inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        val binding=ItemListViewBinding.bind(itemView)
+        private val binding=ItemListViewBinding.bind(itemView)
         fun render(card:Card){
             binding.tvNroCard.text=card.number
             binding.tvPropietario.text=card.owner
             binding.tvFecha.text=card.date
             Picasso.get().load(card.img).into(binding.ivCard)
             itemView.setOnClickListener {
-                Toast.makeText(itemView.context,"Tarjeta elegida : ${card.number}",Toast.LENGTH_SHORT).show()
+                itemClickListener.onItemClick(card.number.toString())
             }
         }
     }

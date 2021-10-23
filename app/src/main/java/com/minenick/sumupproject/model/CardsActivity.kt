@@ -11,7 +11,7 @@ import com.minenick.sumupproject.databinding.ActivityCardsBinding
 import com.minenick.sumupproject.db.CardSQLiteHelper
 import com.minenick.sumupproject.entities.Card
 
-class CardsActivity : AppCompatActivity() {
+class CardsActivity : AppCompatActivity(),RecyclerAdapter.onCardClickListener {
 
 
     private var cards:MutableList<Card> = mutableListOf()
@@ -43,7 +43,7 @@ class CardsActivity : AppCompatActivity() {
 
     private fun initRecycle() {
         binding.rvCard.layoutManager=LinearLayoutManager(this)
-        val adapter= RecyclerAdapter(cards)
+        val adapter= RecyclerAdapter(cards,this)
         binding.rvCard.adapter=adapter
     }
     private fun show(cursor:Cursor){
@@ -53,6 +53,12 @@ class CardsActivity : AppCompatActivity() {
 
             }while (cursor.moveToNext())
         }
+    }
+
+    override fun onItemClick(number: String) {
+        startActivity(Intent(this, StreamActivity::class.java).apply{
+            putExtra("number",number)
+        })
     }
 
 }
