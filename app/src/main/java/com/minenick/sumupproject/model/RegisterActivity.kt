@@ -7,17 +7,19 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.minenick.sumupproject.databinding.ActivityRegisterBinding
-import com.minenick.sumupproject.db.UserSQLiteHelper
+import com.minenick.sumupproject.db.DataBaseSQLiteHelper
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var userDBHelper:UserSQLiteHelper
+    private lateinit var userDBHelper:DataBaseSQLiteHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        userDBHelper=UserSQLiteHelper(this)
+        userDBHelper=DataBaseSQLiteHelper(this)
+
+
         binding.btnCancel.setOnClickListener { onBackPressed() }
 
         //Registro
@@ -33,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(binding.etEmail.text.toString(),
                         binding.etPassword.text.toString()).addOnCompleteListener {
                             if(it.isSuccessful){
-                                userDBHelper.addData(binding.etEmail.text.toString(),binding.etPassword.text.toString())
+                                userDBHelper.addDataUser(binding.etEmail.text.toString(),binding.etPassword.text.toString())
                                 startActivity(Intent(this, AuthActivity::class.java))
                             }else{
                                 showAlert()

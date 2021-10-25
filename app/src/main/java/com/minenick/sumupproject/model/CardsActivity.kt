@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.minenick.sumupproject.adapter.RecyclerAdapter
 import com.minenick.sumupproject.databinding.ActivityCardsBinding
-import com.minenick.sumupproject.db.CardSQLiteHelper
+import com.minenick.sumupproject.db.DataBaseSQLiteHelper
 import com.minenick.sumupproject.entities.Card
 
 class CardsActivity : AppCompatActivity(),RecyclerAdapter.onCardClickListener {
@@ -16,7 +16,7 @@ class CardsActivity : AppCompatActivity(),RecyclerAdapter.onCardClickListener {
 
     private var cards:MutableList<Card> = mutableListOf()
     private lateinit var binding:ActivityCardsBinding
-    private lateinit var cardDBHelper:CardSQLiteHelper
+    private lateinit var cardDBHelper:DataBaseSQLiteHelper
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +25,9 @@ class CardsActivity : AppCompatActivity(),RecyclerAdapter.onCardClickListener {
         setContentView(binding.root)
         val bundle=intent.extras
         val email=bundle?.getString("email")
-        cardDBHelper= CardSQLiteHelper(this)
+        cardDBHelper= DataBaseSQLiteHelper(this)
 
-        val cursor: Cursor =cardDBHelper.selectAll(email!!)
+        val cursor: Cursor =cardDBHelper.selectAllCards(email!!)
         show(cursor)
         initRecycle()
         binding.tvWarning.isVisible = cards.isEmpty()
@@ -46,6 +46,7 @@ class CardsActivity : AppCompatActivity(),RecyclerAdapter.onCardClickListener {
         val adapter= RecyclerAdapter(cards,this)
         binding.rvCard.adapter=adapter
     }
+
     private fun show(cursor:Cursor){
         if(cursor.moveToFirst()){
             do {

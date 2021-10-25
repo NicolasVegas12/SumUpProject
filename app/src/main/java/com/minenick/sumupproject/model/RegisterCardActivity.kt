@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.minenick.sumupproject.databinding.ActivityRegisterCardBinding
-import com.minenick.sumupproject.db.CardSQLiteHelper
+import com.minenick.sumupproject.db.DataBaseSQLiteHelper
 import com.minenick.sumupproject.entities.Card
 import com.squareup.picasso.Picasso
 
@@ -19,7 +19,7 @@ class RegisterCardActivity : AppCompatActivity() {
 
 
     private lateinit var binding:ActivityRegisterCardBinding
-    private lateinit var cardSQLHelper:CardSQLiteHelper
+    private lateinit var cardSQLHelper:DataBaseSQLiteHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         binding= ActivityRegisterCardBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class RegisterCardActivity : AppCompatActivity() {
 
         val bundle:Bundle?= intent.extras
         val email:String?=bundle?.getString("email")
-        cardSQLHelper=CardSQLiteHelper(this)
+        cardSQLHelper= DataBaseSQLiteHelper(this)
 
 
         var i = 0
@@ -59,7 +59,7 @@ class RegisterCardActivity : AppCompatActivity() {
             val date=binding.etDate1.text.toString()+" / "+
                     binding.edDate2.text.toString()
 
-            cardSQLHelper.addData(email!!, Card(number,name,date,tarjetas[i]))
+            cardSQLHelper.addDataCard(email!!, Card(number,name,date,tarjetas[i]))
 
 
             startActivity(Intent(this, CardsActivity::class.java).apply {

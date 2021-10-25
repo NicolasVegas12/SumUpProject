@@ -4,15 +4,12 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.minenick.sumupproject.R
 import com.minenick.sumupproject.databinding.ItemStreamViewBinding
 import com.minenick.sumupproject.entities.Stream
-import com.minenick.sumupproject.model.StreamActivity
 import com.squareup.picasso.Picasso
 import java.util.*
-import kotlin.collections.ArrayList
 
 class StreamAdapter(val streamList:MutableList<Stream>):RecyclerView.Adapter<StreamAdapter.StreamHolder>() {
 

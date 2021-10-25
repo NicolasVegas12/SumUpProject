@@ -3,13 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/drawable/splash_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_add_stream.xml" value="0.264" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_auth.xml" value="0.25" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_cards.xml" value="0.264" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_register_card.xml" value="0.2" />
-        <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_stream.xml" value="0.22780797101449277" />
+        <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/activity_stream.xml" value="0.46647230320699706" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/item_list_view.xml" value="0.24139492753623187" />
+        <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/item_model_stream_view.xml" value="0.264" />
         <entry key="..\:/Android Studio Proyects/SumUpProject/app/src/main/res/layout/item_stream_view.xml" value="0.4" />
       </map>
     </option>
