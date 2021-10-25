@@ -10,18 +10,19 @@ import com.minenick.sumupproject.databinding.ItemModelStreamViewBinding
 import com.minenick.sumupproject.entities.ModelStream
 import com.squareup.picasso.Picasso
 
-class ModelStreamAdapter(val modelList:MutableList<ModelStream>, private val itemStreamListener:onStreamClickListener):RecyclerView.Adapter<ModelStreamAdapter.ModelHolder>() {
-
+class ModelStreamAdapter(private val modelList:MutableList<ModelStream>, private val itemStreamListener:onStreamClickListener):RecyclerView.Adapter<ModelStreamAdapter.ModelHolder>() {
+    var row_index:Int=-1
     interface onStreamClickListener{
-        fun onItemClick()
+        fun onItemClick(stream:String,img:String)
     }
-    class ModelHolder(val view: View):RecyclerView.ViewHolder(view){
+    inner class ModelHolder(val view: View):RecyclerView.ViewHolder(view){
         private val binding=ItemModelStreamViewBinding.bind(view)
         fun render(model:ModelStream){
             binding.tvModel.text=model.stream
             Picasso.get().load(model.img).into(binding.ivModel)
             view.setOnClickListener{
-                view.setBackgroundColor(Color.parseColor("#1D043B"))
+                view.setBackgroundColor(Color.parseColor("#FCEFCD"))
+                itemStreamListener.onItemClick(model.stream,model.img)
             }
         }
     }

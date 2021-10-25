@@ -10,7 +10,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvModel"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:background="@color/background"
         app:layout_constraintBottom_toTopOf="@id/flRegister"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,6 +32,7 @@
             android:textColor="@color/white"/>
 
         <EditText
+            android:id="@+id/etPrecio"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
@@ -44,11 +45,13 @@
             android:text="Dia de Pago"
             android:textColor="@color/white"/>
         <EditText
+            android:id="@+id/etDiaPago"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:textColor="@color/white"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="2"/>
     </FrameLayout>
 
     <Button
@@ -57,12 +60,12 @@
         android:layout_height="wrap_content"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnCancel3"
+        app:layout_constraintEnd_toStartOf="@id/btnSave2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flRegister" />
 
     <Button
-        android:id="@+id/btnCancel3"
+        android:id="@+id/btnSave2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar"
@@ -70,6 +73,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnCancel2"
         app:layout_constraintTop_toBottomOf="@+id/flRegister"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.102" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

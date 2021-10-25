@@ -14,9 +14,7 @@ class StreamActivity : AppCompatActivity() {
 
     private lateinit var binding:ActivityStreamBinding
     private lateinit var streamDBHelper:DataBaseSQLiteHelper
-    private var streamList:MutableList<Stream> = mutableListOf(
-        Stream("Spotify",12,15.6f,"https://cdn.smehost.net/sonymusiccommx-mxprod/wp-content/uploads/2019/08/SPOTIFY-PNG.png")
-    )
+    private var streamList:MutableList<Stream> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
