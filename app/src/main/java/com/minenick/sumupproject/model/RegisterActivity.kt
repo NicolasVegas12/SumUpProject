@@ -3,6 +3,7 @@ package com.minenick.sumupproject.model
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -32,12 +33,14 @@ class RegisterActivity : AppCompatActivity() {
             if (binding.etEmail.text.isNotBlank()&&binding.etPassword.text.isNotBlank()&&binding.etRePassword.text.isNotBlank()){
                 if (binding.etPassword.text.toString()==binding.etRePassword.text.toString()){
 
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(binding.etEmail.text.toString(),
-                        binding.etPassword.text.toString()).addOnCompleteListener {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                        binding.etEmail.text.toString().trim(),
+                        binding.etPassword.text.toString().trim()).addOnCompleteListener {
                             if(it.isSuccessful){
                                 userDBHelper.addDataUser(binding.etEmail.text.toString(),binding.etPassword.text.toString())
                                 startActivity(Intent(this, AuthActivity::class.java))
                             }else{
+                                it.exception?.message?.let { it1 -> Log.d("Error login", it1) }
                                 showAlert()
                             }
                     }

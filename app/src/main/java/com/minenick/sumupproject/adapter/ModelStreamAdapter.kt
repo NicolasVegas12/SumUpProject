@@ -10,12 +10,14 @@ import com.minenick.sumupproject.databinding.ItemModelStreamViewBinding
 import com.minenick.sumupproject.entities.ModelStream
 import com.squareup.picasso.Picasso
 
-class ModelStreamAdapter(private val modelList:MutableList<ModelStream>, private val itemStreamListener:onStreamClickListener):RecyclerView.Adapter<ModelStreamAdapter.ModelHolder>() {
-    var row_index:Int=-1
+class ModelStreamAdapter(private val modelList:MutableList<ModelStream>,
+                         private val itemStreamListener:onStreamClickListener):RecyclerView.Adapter<ModelStreamAdapter.ModelHolder>() {
+
     interface onStreamClickListener{
         fun onItemClick(stream:String,img:String)
     }
     inner class ModelHolder(val view: View):RecyclerView.ViewHolder(view){
+
         private val binding=ItemModelStreamViewBinding.bind(view)
         fun render(model:ModelStream){
             binding.tvModel.text=model.stream

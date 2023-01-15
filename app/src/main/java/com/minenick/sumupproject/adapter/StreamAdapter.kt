@@ -1,6 +1,6 @@
 package com.minenick.sumupproject.adapter
 
-import android.content.Intent
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +11,16 @@ import com.minenick.sumupproject.entities.Stream
 import com.squareup.picasso.Picasso
 import java.util.*
 
-class StreamAdapter(val streamList:MutableList<Stream>):RecyclerView.Adapter<StreamAdapter.StreamHolder>() {
+class StreamAdapter(private val streamList:MutableList<Stream>,
+                    val itemStreamListener: ClickListener):RecyclerView.Adapter<StreamAdapter.StreamHolder>() {
 
-    class StreamHolder(view:View):RecyclerView.ViewHolder(view) {
+    private val items:MutableList<Stream> = streamList
+
+    interface ClickListener{
+        fun onDelete(idStream:Int)
+    }
+
+    inner class StreamHolder(view:View):RecyclerView.ViewHolder(view) {
         private val binding=ItemStreamViewBinding.bind(view)
         fun render(stream:Stream){
 
@@ -33,7 +40,12 @@ class StreamAdapter(val streamList:MutableList<Stream>):RecyclerView.Adapter<Str
             binding.tvPrice.text="S/."+stream.precio.toString()
             binding.tvPayDay.text="${stream.fechaPago} / ${time()}"
             Picasso.get().load(stream.img).into(binding.ivStream)
+
+            binding.btnDelete.setOnClickListener {
+                itemStreamListener.onDelete(stream.idStream)
+            }
         }
+
 
     }
 
@@ -43,9 +55,17 @@ class StreamAdapter(val streamList:MutableList<Stream>):RecyclerView.Adapter<Str
     }
 
     override fun onBindViewHolder(holder: StreamHolder, position: Int) {
-        holder.render(streamList[position])
+        holder.render(items[position])
+
     }
 
-    override fun getItemCount(): Int =streamList.size
+    override fun getItemCount(): Int =items.size
 
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setItems(newItems:List<Stream>){
+        items.clear()
+        items.addAll(newItems)
+        notifyDataSetChanged()
+    }
 }

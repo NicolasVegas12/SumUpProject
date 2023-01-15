@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso
 
 class RecyclerAdapter (private val cardList:MutableList<Card>,private val itemClickListener:onCardClickListener) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>(){
 
+    private var items:MutableList<Card> = cardList
     interface onCardClickListener{
         fun onItemClick(number:String)
     }
@@ -37,9 +38,11 @@ class RecyclerAdapter (private val cardList:MutableList<Card>,private val itemCl
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.render(cardList[position])
+        holder.render(items[position])
     }
 
-    override fun getItemCount(): Int = cardList.size
+    override fun getItemCount(): Int = items.size
+
+
 
 }

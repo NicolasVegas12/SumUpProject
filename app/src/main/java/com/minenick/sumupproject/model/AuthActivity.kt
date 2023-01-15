@@ -48,8 +48,9 @@ class AuthActivity : AppCompatActivity() {
         binding.btnLogIn.setOnClickListener {
             if (binding.etEmail.text.isNotBlank()&& binding.etPassword.text.isNotBlank()){
 
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.etEmail.text.toString(),
-                binding.etPassword.text.toString()).addOnCompleteListener {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    binding.etEmail.text.toString().trim(),
+                    binding.etPassword.text.toString().trim()).addOnCompleteListener {
                     if(it.isSuccessful){
                         showHome(it.result?.user?.email?:"")
                     }else{
@@ -80,5 +81,6 @@ class AuthActivity : AppCompatActivity() {
             putExtra("email", email)
         }
         startActivity(homeIntent)
+        finish()
     }
 }

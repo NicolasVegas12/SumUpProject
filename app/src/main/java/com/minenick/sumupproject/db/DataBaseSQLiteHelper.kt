@@ -5,13 +5,15 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
+import com.google.gson.Gson
 import com.minenick.sumupproject.entities.Card
 import com.minenick.sumupproject.entities.Stream
 
 class DataBaseSQLiteHelper(context: Context):SQLiteOpenHelper(context,"sumup.db",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         val query_create_user = "CREATE TABLE users(email VARCHAR(40) PRIMARY KEY, password VARCHAR(20))"
-        val query_create_stream="CREATE TABLE streams(id INTEGER PRIMARY KEY AUTOINCREMENT, stream VARCHAR(20), fechapago INTEGER, precio FLOAT, img TEXT,cardNumber VARCHAR(19),FOREIGN KEY(cardNumber) REFERENCES cards(number))"
+        val query_create_stream="CREATE TABLE streams(idStream INTEGER PRIMARY KEY , stream VARCHAR(20), fechapago INTEGER, precio FLOAT, img TEXT,cardNumber VARCHAR(19),FOREIGN KEY(cardNumber) REFERENCES cards(number))"
         val query_create_card="CREATE TABLE cards(number VARCHAR(19) PRIMARY KEY, owner varchar(40),date VARCHAR(5), img text,cdEmail VARCHAR(40), FOREIGN KEY(cdEmail) REFERENCES users(email))"
 
         db!!.execSQL(query_create_user)
@@ -56,10 +58,19 @@ class DataBaseSQLiteHelper(context: Context):SQLiteOpenHelper(context,"sumup.db"
     fun selectAllStream(number:String): Cursor {
         val db=this.writableDatabase
         val args= arrayOf(number)
+
         return db.rawQuery("SELECT * FROM streams WHERE cardNumber = ?",args)
+    }
+    fun deleteStream(idStream:Int){
+        val db=this.writableDatabase
+        val args= arrayOf(idStream.toString())
+        val borrados = db.delete("streams","idStream = ? ",args)
+        Log.d("Borrados",Gson().toJson(borrados))
+        db.close()
     }
     fun addDataStream(number:String, stream: Stream){
         val data=ContentValues()
+        data.put("idStream",stream.idStream)
         data.put("stream", stream.stream)
         data.put("fechapago",stream.fechaPago)
         data.put("precio", stream.precio)

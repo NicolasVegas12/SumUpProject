@@ -31,10 +31,9 @@ class AddStreamActivity : AppCompatActivity(),ModelStreamAdapter.onStreamClickLi
 
         binding.btnSave2.setOnClickListener {
             if (streamx.isNotBlank() && imgx.isNotBlank()){
-                streamDBHelper.addDataStream(number!!, Stream(streamx,binding.etDiaPago.text.toString().toInt(),binding.etPrecio.text.toString().toFloat(),imgx))
-                startActivity(Intent(this,StreamActivity::class.java).apply {
-                    putExtra("number",number)
-                })
+                val idStream = streamDBHelper.selectAllStream(number!!).count +1
+                streamDBHelper.addDataStream(number, Stream(idStream,streamx,binding.etDiaPago.text.toString().toInt(),binding.etPrecio.text.toString().toFloat(),imgx))
+                onBackPressed()
             }
 
         }
