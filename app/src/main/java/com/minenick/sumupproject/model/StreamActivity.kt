@@ -49,7 +49,6 @@ class StreamActivity : AppCompatActivity(),StreamAdapter.ClickListener {
         val cursor: Cursor =streamDBHelper.selectAllStream(number!!)
         showStream(cursor)
         initRecycle()
-
         super.onResume()
     }
 
